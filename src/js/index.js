@@ -4,6 +4,6 @@ require('../less/main.less');
 
 import React from 'react'
 import ReactDOM from 'react-dom';
-import AppContainer from './containers/app-container'
+import App from './components/app'
 
-ReactDOM.render(<AppContainer />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('app'));
