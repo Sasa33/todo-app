@@ -1,7 +1,6 @@
 import React from 'react'
 
 const Todo = ({todo, deleteTodo}) => {
-  console.log(todo);
   const {id, status, text} = todo
   return (
     <li className="" id={id}>

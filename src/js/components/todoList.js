@@ -1,7 +1,8 @@
 'use strict';
 
 import React, { Component } from 'react';
-import Todo from '../components/todo'
+import Todo from './todo'
+import Footer from './footer'
 import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../constants/FilterTypes'
 
 
@@ -19,19 +20,31 @@ class TodoList extends Component {
     }
   }
 
+  handleFilterChange(filter) {
+    console.log(filter);
+    this.setState({ filter: filter })
+  }
+
   render() {
     const { todos, deleteTodo } = this.props
     const { filter } = this.state
     const filteredTodos = todos.filter(filters[filter])
+    const activeCount = todos.reduce((count, todo) => {
+      return todo.status === 'active' ? count + 1 : count
+    }, 0)
 
     return (
       <div className="main">
         <input className="toggle-all" type="checkbox" />
         <ul className="todo-list">
           {
-            filteredTodos.map((todo, index) => <Todo key={index} todo={todo} deleteTodo= {deleteTodo} />)
+            filteredTodos.map((todo, index) => <Todo key={index} todo={todo}
+                                                      deleteTodo= {deleteTodo} />)
           }
         </ul>
+        <Footer filter={filter}
+                activeCount={activeCount}
+                onFilterChange={this.handleFilterChange.bind(this)} />
       </div>
     )
   }

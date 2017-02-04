@@ -6,7 +6,6 @@ import { connect } from 'react-redux'
 import * as TodoActions from '../actions'
 import AddTodo from '../components/AddTodo'
 import TodoList from '../components/todoList'
-import Footer from '../components/footer'
 
 const App = ({todos, actions}) => {
   return (
@@ -16,7 +15,6 @@ const App = ({todos, actions}) => {
         <AddTodo addTodo={actions.addTodo} />
       </header>
       <TodoList todos={todos} deleteTodo={actions.deleteTodo}/>
-      <Footer />
     </section>
   )
 }
