@@ -1,4 +1,4 @@
-import { ADD_TODO } from '../constants/ActionTypes'
+import { ADD_TODO, DESTORY_ITEM } from '../constants/ActionTypes'
 
 const initialState = [
   { id: 0, status: 'completed', text: 'make components' },
@@ -17,6 +17,13 @@ export default function todos(state = initialState, action) {
           text: action.text
         },
         ...state
+      ]
+
+    case DESTORY_ITEM:
+      let index = state.findIndex((x) => x.id === action.id);
+      return [
+        ...state.slice(0, index),
+        ...state.slice(index + 1)
       ]
 
     default:
