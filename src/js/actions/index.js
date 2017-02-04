@@ -2,4 +2,4 @@ import * as types from '../constants/ActionTypes'
 
 export const addTodo = (text) => ({ type: types.ADD_TODO, text })
 
-export const destoryItem = (id) => ({type: types.DESTORY_ITEM, id})
+export const deleteTodo = (id) => ({type: types.DELETE_TODO, id})

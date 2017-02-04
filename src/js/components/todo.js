@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Todo = ({todo, destoryItem}) => {
+const Todo = ({todo, deleteTodo}) => {
   console.log(todo);
   const {id, status, text} = todo
   return (
@@ -8,7 +8,7 @@ const Todo = ({todo, destoryItem}) => {
       <div className="view">
         <input className="toggle" type="checkbox" />
         <label>{text}</label>
-        <button className="destroy" onClick={() => {destoryItem(id)}}></button>
+        <button className="destroy" onClick={() => {deleteTodo(id)}}></button>
       </div>
       <input className="edit" value={text} onChange={() => {}} />
     </li>

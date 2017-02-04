@@ -1,2 +1,2 @@
 export const ADD_TODO = 'ADD_TODO'
-export const DESTORY_ITEM = 'DESTORY_ITEM'
+export const DELETE_TODO = 'DELETE_TODO'
