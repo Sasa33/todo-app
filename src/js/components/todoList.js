@@ -21,12 +21,11 @@ class TodoList extends Component {
   }
 
   handleFilterChange(filter) {
-    console.log(filter);
     this.setState({ filter: filter })
   }
 
   render() {
-    const { todos, deleteTodo, toggleTodo, changeTodo } = this.props
+    const { todos, deleteTodo, toggleTodo, toggleAll, changeTodo } = this.props
     const { filter } = this.state
     const filteredTodos = todos.filter(filters[filter])
     const activeCount = todos.reduce((count, todo) => {
@@ -35,10 +34,10 @@ class TodoList extends Component {
 
     return (
       <div className="main">
-        <input className="toggle-all" type="checkbox" />
+        <input className="toggle-all" type="checkbox" onChange={() => toggleAll()}/>
         <ul className="todo-list">
           {
-            todos.map((todo, index) => <Todo key={index} todo={todo} deleteTodo={deleteTodo} toggleTodo={toggleTodo} changeTodo={changeTodo}/>)
+            filteredTodos.map((todo, index) => <Todo key={index} todo={todo} deleteTodo={deleteTodo} toggleTodo={toggleTodo} changeTodo={changeTodo}/>)
           }
         </ul>
         <Footer filter={filter}

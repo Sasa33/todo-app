@@ -14,7 +14,9 @@ const App = ({todos, actions}) => {
         <h1>todos</h1>
         <AddTodo addTodo={actions.addTodo} />
       </header>
-      <TodoList todos={todos} deleteTodo={actions.deleteTodo} toggleTodo={actions.toggleTodo} changeTodo={actions.changeTodo}/>
+      <TodoList todos={todos} deleteTodo={actions.deleteTodo}
+        toggleTodo={actions.toggleTodo} toggleAll={actions.toggleAll}
+        changeTodo={actions.changeTodo}/>
     </section>
   )
 }

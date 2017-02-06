@@ -1,7 +1,6 @@
 import React from 'react'
 
 const Todo = ({todo, deleteTodo, toggleTodo, changeTodo}) => {
-  console.log(todo);
   const {id, status, text} = todo
   const completed = status === 'completed'
 
