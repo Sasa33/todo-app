@@ -1,4 +1,4 @@
-import { ADD_TODO, DELETE_TODO } from '../constants/ActionTypes'
+import { ADD_TODO, DELETE_TODO, TOGGLE_TODO, CHANGE_TODO } from '../constants/ActionTypes'
 
 const initialState = [
   { id: 0, status: 'completed', text: 'make components' },
@@ -24,6 +24,26 @@ export default function todos(state = initialState, action) {
         return todo.id != action.id
       })
 
+    case TOGGLE_TODO:
+      return state.map(todo => {
+        if (todo.id != action.id) {
+          return todo;
+        }
+        return Object.assign({}, todo, {
+          status: todo.status=='completed' ? 'active' : 'completed'
+        })  
+      })
+
+    case CHANGE_TODO:
+      const targetValue = action.e.target.value;
+      return state.map(todo => {
+        if (todo.id != action.id) {
+          return todo;
+        }
+        return Object.assign({}, todo, {
+          text: targetValue
+        })  
+      }) 
     default:
       return state
   }
