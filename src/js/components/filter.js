@@ -1,10 +1,13 @@
 import React from 'react'
 
-const Filter = ({status}) => {
+const Filter = ({filter, title, selected, onFilterChange}) => {
 
   return (
     <li>
-      <a href="#/" className="selected">{status}</a>
+      <a className={selected ? 'selected' : ''}
+        onClick={() => onFilterChange(filter)}>
+        {title}
+      </a>
     </li>
   )
 }
