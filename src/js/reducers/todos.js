@@ -4,9 +4,10 @@ import { ADD_TODO, DELETE_TODO, TOGGLE_TODO, TOGGLE_ALL, CHANGE_TODO,
 
 const initialState = [
   { id: 0, status: 'completed', text: 'make components' },
-  { id: 1, status: 'active', text: 'design actions' },
-  { id: 2, status: 'active', text: 'implement reducer' },
+  { id: 1, status: 'completed', text: 'design actions' },
+  { id: 2, status: 'completed', text: 'implement reducer' },
   { id: 3, status: 'completed', text: 'connect components' },
+  { id: 4, status: 'active', text: 'add local storage feature' },
 ]
 
 export default function todos(state = initialState, action) {
