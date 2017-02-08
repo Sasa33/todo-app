@@ -13,3 +13,5 @@ export const changeTodo = (id, e) => ({type: types.CHANGE_TODO, id, e})
 export const moveTodoUp = (id) => ({type: types.MOVE_UP, id})
 
 export const moveTodoDown = (id) => ({type: types.MOVE_DOWN, id})
+
+export const saveTodo = () => ({type: types.SAVE_TODO})

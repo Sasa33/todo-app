@@ -1,6 +1,7 @@
 'use strict';
 
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { ipcRenderer } from 'electron'
 import Todo from './todo'
 import Footer from './footer'
 import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../constants/FilterTypes'
@@ -19,6 +20,18 @@ class TodoList extends Component {
       filter: SHOW_ALL
     }
   }
+
+  componentDidMount() {
+    const { saveTodo } = this.props
+    ipcRenderer.on('saveTodos', (event, data) => {
+      saveTodo()
+    })
+  }
+
+  componentWillUnmount() {
+    ipcRenderer.removeListener('saveTodos', () => {});
+  }
+
 
   handleFilterChange(filter) {
     this.setState({ filter: filter })
