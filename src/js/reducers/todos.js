@@ -7,7 +7,7 @@ const initialState = [
   { id: 1, status: 'completed', text: 'design actions' },
   { id: 2, status: 'completed', text: 'implement reducer' },
   { id: 3, status: 'completed', text: 'connect components' },
-  { id: 4, status: 'active', text: 'add local storage feature' },
+  { id: 4, status: 'completed', text: 'add local storage feature' },
 ]
 
 const storage = localStorage.getItem('todos')
