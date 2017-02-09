@@ -18,7 +18,8 @@ const App = ({todos, actions}) => {
         toggleTodo={actions.toggleTodo} toggleAll={actions.toggleAll}
         editTodo={actions.editTodo} changeTodo={actions.changeTodo}
         submitTodo={actions.submitTodo}
-        moveTodoUp={actions.moveTodoUp} moveTodoDown={actions.moveTodoDown} />
+        moveTodoUp={actions.moveTodoUp} moveTodoDown={actions.moveTodoDown} 
+        saveTodo={actions.saveTodo} />
     </section>
   )
 }

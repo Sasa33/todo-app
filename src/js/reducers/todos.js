@@ -1,6 +1,6 @@
 import pureSwap from 'pure-swap';
 import { ADD_TODO, DELETE_TODO, TOGGLE_TODO, TOGGLE_ALL, EDIT_TODO, CHANGE_TODO,
-  SUBMITTODO, MOVE_UP, MOVE_DOWN } from '../constants/ActionTypes'
+  SUBMITTODO, MOVE_UP, MOVE_DOWN, SAVE_TODO } from '../constants/ActionTypes'
 
 const initialState = [
   { id: 0, status: 'completed', editing: false, text: 'make components' },
@@ -10,7 +10,11 @@ const initialState = [
   { id: 4, status: 'active', editing: false, text: 'add local storage feature' },
 ]
 
-export default function todos(state = initialState, action) {
+const storage = localStorage.getItem('todos')
+const initialTodos = storage !== null ? JSON.parse(storage) : initialState
+
+
+export default function todos(state = initialTodos, action) {
   switch (action.type) {
     case ADD_TODO:
       return [
@@ -87,6 +91,10 @@ export default function todos(state = initialState, action) {
         return todo.id == action.id
       })
       return pureSwap(state, currentIndex2, currentIndex2 + 1);
+
+    case SAVE_TODO:
+      localStorage.setItem('todos', JSON.stringify(state))
+      return state
 
     default:
       return state

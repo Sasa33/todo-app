@@ -34,5 +34,7 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.IgnorePlugin(new RegExp("^(fs|ipc)$"))
-  ]
+  ],
+
+  target: 'electron-renderer'
 }
