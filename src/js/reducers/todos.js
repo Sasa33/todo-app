@@ -1,13 +1,13 @@
 import pureSwap from 'pure-swap';
-import { ADD_TODO, DELETE_TODO, TOGGLE_TODO, TOGGLE_ALL, CHANGE_TODO,
-  MOVE_UP, MOVE_DOWN } from '../constants/ActionTypes'
+import { ADD_TODO, DELETE_TODO, TOGGLE_TODO, TOGGLE_ALL, EDIT_TODO, CHANGE_TODO,
+  SUBMITTODO, MOVE_UP, MOVE_DOWN } from '../constants/ActionTypes'
 
 const initialState = [
-  { id: 0, status: 'completed', text: 'make components' },
-  { id: 1, status: 'completed', text: 'design actions' },
-  { id: 2, status: 'completed', text: 'implement reducer' },
-  { id: 3, status: 'completed', text: 'connect components' },
-  { id: 4, status: 'active', text: 'add local storage feature' },
+  { id: 0, status: 'completed', editing: false, text: 'make components' },
+  { id: 1, status: 'completed', editing: false, text: 'design actions' },
+  { id: 2, status: 'completed', editing: false, text: 'implement reducer' },
+  { id: 3, status: 'completed', editing: false, text: 'connect components' },
+  { id: 4, status: 'active', editing: false, text: 'add local storage feature' },
 ]
 
 export default function todos(state = initialState, action) {
@@ -17,6 +17,7 @@ export default function todos(state = initialState, action) {
         {
           id: state.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1,
           status: 'active',
+          editing: false,
           text: action.text
         },
         ...state
@@ -44,6 +45,16 @@ export default function todos(state = initialState, action) {
         })
       })
 
+    case EDIT_TODO:
+      return state.map(todo => {
+        if (todo.id != action.id) {
+          return todo;
+        }
+        return Object.assign({}, todo, {
+          editing: true
+        })
+      })
+
     case CHANGE_TODO:
       const targetValue = action.e.target.value;
       return state.map(todo => {
@@ -52,6 +63,16 @@ export default function todos(state = initialState, action) {
         }
         return Object.assign({}, todo, {
           text: targetValue
+        })
+      })
+
+    case SUBMITTODO:
+      return state.map(todo => {
+        if (todo.id != action.id) {
+          return todo;
+        }
+        return Object.assign({}, todo, {
+          editing: false
         })
       })
 

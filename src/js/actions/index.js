@@ -8,7 +8,11 @@ export const toggleTodo = (id) => ({type: types.TOGGLE_TODO, id})
 
 export const toggleAll = () => ({type: types.TOGGLE_ALL})
 
+export const editTodo = (id) => ({type: types.EDIT_TODO, id})
+
 export const changeTodo = (id, e) => ({type: types.CHANGE_TODO, id, e})
+
+export const submitTodo = (id) => ({type: types.SUBMITTODO, id})
 
 export const moveTodoUp = (id) => ({type: types.MOVE_UP, id})
 

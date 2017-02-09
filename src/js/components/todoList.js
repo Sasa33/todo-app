@@ -25,8 +25,8 @@ class TodoList extends Component {
   }
 
   render() {
-    const { todos, deleteTodo, toggleTodo, toggleAll, changeTodo,
-            moveTodoUp, moveTodoDown } = this.props
+    const { todos, deleteTodo, toggleTodo, toggleAll, editTodo, 
+            changeTodo, submitTodo, moveTodoUp, moveTodoDown } = this.props
     const { filter } = this.state
     const filteredTodos = todos.filter(filters[filter])
     const activeCount = todos.reduce((count, todo) => {
@@ -39,7 +39,8 @@ class TodoList extends Component {
         <ul className="todo-list">
           {
             filteredTodos.map((todo, index) => <Todo key={index} todo={todo}
-              deleteTodo={deleteTodo} toggleTodo={toggleTodo} changeTodo={changeTodo}
+              deleteTodo={deleteTodo} toggleTodo={toggleTodo} editTodo={editTodo} 
+              changeTodo={changeTodo} submitTodo={submitTodo}
               moveTodoUp={moveTodoUp} moveTodoDown={moveTodoDown}
               showUp={index > 0} showDown={index < todos.length - 1}  />)
           }
