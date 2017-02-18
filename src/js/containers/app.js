@@ -46,6 +46,7 @@ class App extends Component {
         submitTodo={actions.submitTodo}
         saveTodo={actions.saveTodo}
         onSortEnd={this.onSortEnd}
+        timeReminder={actions.timeReminder}
       />
     </section>
   );

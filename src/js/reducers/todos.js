@@ -1,13 +1,13 @@
 import pureSwap from 'pure-swap';
 import { ADD_TODO, DELETE_TODO, TOGGLE_TODO, TOGGLE_ALL, EDIT_TODO, CHANGE_TODO,
-  SUBMITTODO, SAVE_TODO } from '../constants/ActionTypes';
+  SUBMITTODO, SAVE_TODO, TIME_REMINDER } from '../constants/ActionTypes';
 
 const initialState = [
-  { id: 0, status: 'completed', editing: false, text: 'make components' },
-  { id: 1, status: 'completed', editing: false, text: 'design actions' },
-  { id: 2, status: 'completed', editing: false, text: 'implement reducer' },
-  { id: 3, status: 'completed', editing: false, text: 'connect components' },
-  { id: 4, status: 'active', editing: false, text: 'add local storage feature' },
+  { id: 0, status: 'completed', editing: false, settingTime: false, text: 'make components', time: '12' },
+  { id: 1, status: 'completed', editing: false, settingTime: false, text: 'design actions', time: '12' },
+  { id: 2, status: 'completed', editing: false, settingTime: false, text: 'implement reducer', time: '12' },
+  { id: 3, status: 'completed', editing: false, settingTime: false, text: 'connect components', time: '12' },
+  { id: 4, status: 'active', editing: false, settingTime: false, text: 'add local storage feature', time: '12' },
 ];
 
 const storage = localStorage.getItem('todos');
@@ -65,9 +65,14 @@ export default function todos(state = initialTodos, action) {
         if (todo.id !== action.id) {
           return todo;
         }
+        if (action.field == "text") {
+          return Object.assign({}, todo, {
+            text: targetValue
+          });
+        }
         return Object.assign({}, todo, {
-          text: targetValue
-        });
+            time: targetValue
+          });  
       });
 
     case SUBMITTODO:
@@ -76,13 +81,24 @@ export default function todos(state = initialTodos, action) {
           return todo;
         }
         return Object.assign({}, todo, {
-          editing: false
+          editing: false,
+          settingTime: false,
         });
       });
 
     case SAVE_TODO:
       localStorage.setItem('todos', JSON.stringify(state));
       return state;
+
+    case TIME_REMINDER:
+      return state.map(todo => {
+        if (todo.id !== action.id) {
+          return todo;
+        }
+        return Object.assign({}, todo, {
+          settingTime: true
+        });
+      });
 
     default:
       return state;

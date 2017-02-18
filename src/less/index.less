@@ -1,13 +1,23 @@
-.todo-list li .todo-text {
-    width: 470px;
-	word-break: break-all;
-    padding: 15px 15px 15px 15px;
-    margin-left: 45px;
+.todo-list li .timeReminder {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 50px;
+    bottom: 0;
+    width: 40px;
+    height: 40px;
+    margin: auto 0;
+    background: red;
+}
+
+.todo-list li:hover .timeReminder {
     display: block;
-    line-height: 1.2;
-    transition: color 0.4s;
-    border: none;
-    font-size: 24px;
-    font-weight: 300;
-    color: #4d4d4d;
+}
+
+.todo-list li .setTimeReminder {
+    display: none;
+}
+
+.todo-list li.settingTime .setTimeReminder {
+    display: block;
 }
