@@ -1,4 +1,5 @@
 require('../less/main.less');
+import 'react-date-picker/index.css'
 
 import React from 'react';
 import { render } from 'react-dom';

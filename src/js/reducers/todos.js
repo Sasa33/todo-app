@@ -60,7 +60,7 @@ export default function todos(state = initialTodos, action) {
       });
 
     case CHANGE_TODO:
-      const targetValue = action.e.target.value;
+      const targetValue = action.value;
       return state.map(todo => {
         if (todo.id !== action.id) {
           return todo;
@@ -72,7 +72,7 @@ export default function todos(state = initialTodos, action) {
         }
         return Object.assign({}, todo, {
             time: targetValue
-          });  
+          });
       });
 
     case SUBMITTODO:

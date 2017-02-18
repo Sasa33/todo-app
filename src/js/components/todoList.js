@@ -51,7 +51,7 @@ class TodoList extends Component {
         <input className="toggle-all" type="checkbox" onChange={() => toggleAll()} />
         <ul className="todo-list">
           {
-            filteredTodos.map((todo, index) => <SortableTodo todo={todo}
+            filteredTodos.map((todo, index) => <Todo todo={todo}
               key={`item-${index}`} index={index}
               deleteTodo={deleteTodo} toggleTodo={toggleTodo} editTodo={editTodo}
               changeTodo={changeTodo} submitTodo={submitTodo} timeReminder={timeReminder}

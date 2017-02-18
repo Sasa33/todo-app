@@ -10,7 +10,7 @@ export const toggleAll = () => ({ type: types.TOGGLE_ALL });
 
 export const editTodo = (id) => ({ type: types.EDIT_TODO, id });
 
-export const changeTodo = (id, e, field) => ({ type: types.CHANGE_TODO, id, e , field});
+export const changeTodo = (id, value, field) => ({ type: types.CHANGE_TODO, id, value, field});
 
 export const submitTodo = (id) => ({ type: types.SUBMITTODO, id });
 

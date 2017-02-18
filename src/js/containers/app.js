@@ -32,7 +32,6 @@ class App extends Component {
   render() {
     const { todos } = this.state
     const { actions } = this.props
-    console.log(actions);
 
     return (
     <section className="todoapp">
@@ -40,7 +39,7 @@ class App extends Component {
         <h1>todo list</h1>
         <AddTodo addTodo={actions.addTodo} />
       </header>
-      <SortableTodoList todos={todos} deleteTodo={actions.deleteTodo}
+      <TodoList todos={todos} deleteTodo={actions.deleteTodo}
         toggleTodo={actions.toggleTodo} toggleAll={actions.toggleAll}
         editTodo={actions.editTodo} changeTodo={actions.changeTodo}
         submitTodo={actions.submitTodo}
