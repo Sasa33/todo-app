@@ -9,7 +9,10 @@
     "electron-rebuild": "./node_modules/.bin/electron-rebuild",
     "package": "asar pack MyApp-darwin-x64/MyApp.app/Contents/Resources/app MyApp-darwin-x64/MyApp.app/Contents/Resources/electron.asar",
     "build": "electron-packager . MyApp --overwrite --icon=Icon.icns --prune=true",
-    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=Icon.icns --prune=true --out=release-builds"
+    "package-mac": "webpack -p && electron-packager . --overwrite --platform=darwin --arch=x64 --icon=./assets/Icon.icns --prune=true --out=release-builds",
+    "package-win": "webpack -p && electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=./assets/Icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"My App\"",
+    "package-linux": "webpack -p && electron-packager . --overwrite --platform=linux --arch=x64 --icon=./assets/Icon.png --prune=true --out=release-builds",
+    "package-all": "webpack -p && electron-packager . --overwrite --platform=all --arch=x64 --icon=./assets/ --prune=true --out=release-builds"
   },
   "keywords": [
     "electron",

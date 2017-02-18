@@ -3,3 +3,4 @@ node_modules/
 MyApp-darwin-x64/
 *.icns
 release-builds/
+public/

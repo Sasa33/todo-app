@@ -1,21 +1,17 @@
 const { app, BrowserWindow, globalShortcut } = require('electron')
 
-require('electron-reload')(__dirname, {
-  electron: require('electron-prebuilt')
-});
-
 let mainWindow
 
 const createWindow = () => {
-  mainWindow = new BrowserWindow({width: 800, height: 600})
+  mainWindow = new BrowserWindow({width: 1000, height: 800})
   mainWindow.loadURL(`file://${__dirname}/src/index.html`)
 
-  mainWindow.webContents.openDevTools()
+  // mainWindow.webContents.openDevTools()
 
   // Register a 'CommandOrControl+S' shortcut listener.
   const ret = globalShortcut.register('CommandOrControl+S', () => {
     console.log('CommandOrControl+S is pressed')
-    mainWindow.webContents.send('saveTodos', null);
+    mainWindow && mainWindow.webContents.send('saveTodos', null);
   })
 
   if (!ret) {

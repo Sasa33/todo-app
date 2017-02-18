@@ -11,14 +11,14 @@ const App = ({todos, actions}) => {
   return (
     <section className="todoapp">
       <header className="header">
-        <h1>todos</h1>
+        <h1>todo list</h1>
         <AddTodo addTodo={actions.addTodo} />
       </header>
       <TodoList todos={todos} deleteTodo={actions.deleteTodo}
         toggleTodo={actions.toggleTodo} toggleAll={actions.toggleAll}
         editTodo={actions.editTodo} changeTodo={actions.changeTodo}
         submitTodo={actions.submitTodo}
-        moveTodoUp={actions.moveTodoUp} moveTodoDown={actions.moveTodoDown} 
+        moveTodoUp={actions.moveTodoUp} moveTodoDown={actions.moveTodoDown}
         saveTodo={actions.saveTodo} />
     </section>
   )
