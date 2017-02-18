@@ -1,13 +1,11 @@
-'use strict';
+import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as TodoActions from '../actions';
+import AddTodo from '../components/addTodo';
+import TodoList from '../components/todoList';
 
-import React, { Component } from 'react'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import * as TodoActions from '../actions'
-import AddTodo from '../components/AddTodo'
-import TodoList from '../components/todoList'
-
-const App = ({todos, actions}) => {
+const App = ({ todos, actions }) => {
   return (
     <section className="todoapp">
       <header className="header">
@@ -19,20 +17,21 @@ const App = ({todos, actions}) => {
         editTodo={actions.editTodo} changeTodo={actions.changeTodo}
         submitTodo={actions.submitTodo}
         moveTodoUp={actions.moveTodoUp} moveTodoDown={actions.moveTodoDown}
-        saveTodo={actions.saveTodo} />
+        saveTodo={actions.saveTodo}
+      />
     </section>
-  )
-}
+  );
+};
 
 const mapStateToProps = state => ({
   todos: state.todos
-})
+});
 
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(TodoActions, dispatch)
-})
+});
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(App)
+)(App);

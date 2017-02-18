@@ -27,14 +27,14 @@ module.exports = {
         }
       },
       { test: /\.css$/, loader: 'style-loader!css-loader' },
-      { test: /\.less$/, loader: 'style-loader!css-loader!less-loader'}
+      { test: /\.less$/, loader: 'style-loader!css-loader!less-loader' }
     ]
   },
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.IgnorePlugin(new RegExp("^(fs|ipc)$"))
+    new webpack.IgnorePlugin(new RegExp('^(fs|ipc)$'))
   ],
 
   target: 'electron-renderer'
-}
+};
