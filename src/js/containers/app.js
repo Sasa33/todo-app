@@ -42,6 +42,7 @@ class App extends Component {
       <TodoList todos={todos} deleteTodo={actions.deleteTodo}
         toggleTodo={actions.toggleTodo} toggleAll={actions.toggleAll}
         editTodo={actions.editTodo} changeTodo={actions.changeTodo}
+        moveTodoUp={actions.moveTodoUp} moveTodoDown={actions.moveTodoDown}
         submitTodo={actions.submitTodo}
         saveTodo={actions.saveTodo}
         onSortEnd={this.onSortEnd}

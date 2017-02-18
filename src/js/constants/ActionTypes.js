@@ -6,4 +6,6 @@ export const EDIT_TODO = 'EDIT_TODO';
 export const CHANGE_TODO = 'CHANGE_TODO';
 export const SUBMITTODO = 'SUBMITTODO';
 export const SAVE_TODO = 'SAVE_TODO';
+export const MOVE_UP = 'MOVE_UP';
+export const MOVE_DOWN = 'MOVE_DOWN';
 export const TIME_REMINDER = 'TIME_REMINDER';

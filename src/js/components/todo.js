@@ -2,7 +2,7 @@ import React from 'react';
 import { DateField, DatePicker } from 'react-date-picker'
 import moment from 'moment'
 const Todo = ({ todo, deleteTodo, toggleTodo, editTodo, changeTodo,
-  submitTodo, timeReminder }) => {
+  submitTodo, timeReminder, moveTodoUp, moveTodoDown, showUp, showDown }) => {
   const { id, status, editing, text, settingTime, time } = todo;
   const completed = status === 'completed';
 
@@ -34,6 +34,8 @@ const Todo = ({ todo, deleteTodo, toggleTodo, editTodo, changeTodo,
       <div className="view">
         <input className="toggle" type="checkbox" checked={completed} type="checkbox" onChange={() => { toggleTodo(id); }} />
         <label onDoubleClick={() => { editTodo(id); }}>{text}</label>
+        {showUp ? <button className="move up" onClick={() => { moveTodoUp(id); }}></button> : null}
+        {showDown ? <button className="move down" onClick={() => { moveTodoDown(id); }}></button> : null}
         <button className="timeReminder" onClick={() => { timeReminder(id);}}></button>
         <button className="destroy" onClick={() => { deleteTodo(id); }}></button>
       </div>

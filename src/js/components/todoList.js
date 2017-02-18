@@ -39,7 +39,7 @@ class TodoList extends Component {
 
   render() {
     const { todos, deleteTodo, toggleTodo, toggleAll, editTodo,
-            changeTodo, submitTodo, timeReminder } = this.props;
+            changeTodo, submitTodo, timeReminder, moveTodoUp, moveTodoDown } = this.props;
     const { filter } = this.state;
     const filteredTodos = todos.filter(filters[filter]);
     const activeCount = todos.reduce((count, todo) => {
@@ -55,6 +55,8 @@ class TodoList extends Component {
               key={`item-${index}`} index={index}
               deleteTodo={deleteTodo} toggleTodo={toggleTodo} editTodo={editTodo}
               changeTodo={changeTodo} submitTodo={submitTodo} timeReminder={timeReminder}
+              moveTodoUp={moveTodoUp} moveTodoDown={moveTodoDown}
+              showUp={index > 0} showDown={index < todos.length - 1}
             />)
           }
         </ul>
