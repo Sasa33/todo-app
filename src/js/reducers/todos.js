@@ -1,6 +1,6 @@
 import pureSwap from 'pure-swap';
 import { ADD_TODO, DELETE_TODO, TOGGLE_TODO, TOGGLE_ALL, EDIT_TODO, CHANGE_TODO,
-  SUBMITTODO, MOVE_UP, MOVE_DOWN, SAVE_TODO } from '../constants/ActionTypes';
+  SUBMITTODO, SAVE_TODO } from '../constants/ActionTypes';
 
 const initialState = [
   { id: 0, status: 'completed', editing: false, text: 'make components' },
@@ -79,18 +79,6 @@ export default function todos(state = initialTodos, action) {
           editing: false
         });
       });
-
-    case MOVE_UP:
-      const currentIndex = state.findIndex((todo) => {
-        return todo.id === action.id;
-      });
-      return pureSwap(state, currentIndex - 1, currentIndex);
-
-    case MOVE_DOWN:
-      const currentIndex2 = state.findIndex((todo) => {
-        return todo.id === action.id;
-      });
-      return pureSwap(state, currentIndex2, currentIndex2 + 1);
 
     case SAVE_TODO:
       localStorage.setItem('todos', JSON.stringify(state));

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Todo = ({ todo, deleteTodo, toggleTodo, editTodo, changeTodo,
-  submitTodo, moveTodoUp, moveTodoDown, showUp, showDown }) => {
+  submitTodo }) => {
   const { id, status, editing, text } = todo;
   const completed = status === 'completed';
 
@@ -10,8 +10,6 @@ const Todo = ({ todo, deleteTodo, toggleTodo, editTodo, changeTodo,
       <div className="view">
         <input className="toggle" type="checkbox" checked={completed} type="checkbox" onChange={() => { toggleTodo(id); }} />
         <label onDoubleClick={() => { editTodo(id); }}>{text}</label>
-        {showUp ? <button className="move up" onClick={() => { moveTodoUp(id); }}></button> : null}
-        {showDown ? <button className="move down" onClick={() => { moveTodoDown(id); }}></button> : null}
         <button className="destroy" onClick={() => { deleteTodo(id); }}></button>
       </div>
       <input className="edit" value={text}

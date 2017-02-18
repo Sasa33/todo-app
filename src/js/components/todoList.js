@@ -1,11 +1,11 @@
-'use strict';
-
 import React, { Component } from 'react';
 import { ipcRenderer } from 'electron';
 import Todo from './todo';
 import Footer from './footer';
 import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../constants/FilterTypes';
+import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 
+const SortableTodo = SortableElement(Todo);
 
 const filters = {
   [SHOW_ALL]: () => true,
@@ -39,7 +39,7 @@ class TodoList extends Component {
 
   render() {
     const { todos, deleteTodo, toggleTodo, toggleAll, editTodo,
-            changeTodo, submitTodo, moveTodoUp, moveTodoDown } = this.props;
+            changeTodo, submitTodo } = this.props;
     const { filter } = this.state;
     const filteredTodos = todos.filter(filters[filter]);
     const activeCount = todos.reduce((count, todo) => {
@@ -51,11 +51,10 @@ class TodoList extends Component {
         <input className="toggle-all" type="checkbox" onChange={() => toggleAll()} />
         <ul className="todo-list">
           {
-            filteredTodos.map((todo, index) => <Todo key={index} todo={todo}
+            filteredTodos.map((todo, index) => <SortableTodo todo={todo}
+              key={`item-${index}`} index={index}
               deleteTodo={deleteTodo} toggleTodo={toggleTodo} editTodo={editTodo}
               changeTodo={changeTodo} submitTodo={submitTodo}
-              moveTodoUp={moveTodoUp} moveTodoDown={moveTodoDown}
-              showUp={index > 0} showDown={index < todos.length - 1}
             />)
           }
         </ul>
