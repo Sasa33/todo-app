@@ -26,7 +26,7 @@ const Todo = ({ todo, deleteTodo, toggleTodo, editTodo, changeTodo,
   const handleChange = (dateString, { dateMoment, timestamp }) => {
     changeTodo(id, dateMoment.valueOf(), 'time')
     submitTodo(id)
-    onStartTodo(todo, dateMoment.valueOf())
+    status !== 'completed' ? onStartTodo(todo, dateMoment.valueOf()) : null;
   }
 
   return (
